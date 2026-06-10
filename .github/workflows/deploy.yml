@@ -25,4 +25,5 @@ jobs:
             cd /opt/weather
             git pull origin master
             npm install
+            rm -rf /opt/weather/dist
             npm run build
