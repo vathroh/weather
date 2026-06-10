@@ -1,0 +1,180 @@
+:root {
+  /* Solara Health Palette */
+  --color-primary: #431407;
+  --color-secondary: #F97316;
+  --color-accent: #F97316;
+  --color-background: #FFF5F0;
+  --color-surface-light: #FFFFFF;
+  --color-surface-dark: #431407;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-border: #F3E8E2;
+
+  /* Theme mappings (Default: Light Mode) */
+  --bg-color: var(--color-background);
+  --panel-color: var(--color-surface-light);
+  --panel-color-dark: var(--color-surface-dark);
+  --text-main: var(--color-text-primary);
+  --text-muted: var(--color-text-secondary);
+  --border-color: var(--color-border);
+  --accent-color: var(--color-accent);
+  --primary-color: var(--color-primary);
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 2px rgba(67, 20, 7, 0.04);
+  --shadow-md: 0 8px 20px rgba(67, 20, 7, 0.06);
+  --shadow-lg: 0 16px 36px rgba(67, 20, 7, 0.1);
+
+  /* Typography */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Geometry Radii */
+  --radius-card: 16px;
+  --radius-control: 8px;
+  --radius-pill: 9999px;
+
+  /* Motion & Animations */
+  --transition-fast: 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Adaptive Dark Mode Override */
+:root[data-theme="dark"] {
+  --bg-color: #1A0A05;
+  --panel-color: #2D110A;
+  --panel-color-dark: #150602;
+  --text-main: #FFF8F5;
+  --text-muted: #D3C3BD;
+  --border-color: #4D1A0D;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Global Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Basic Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-slow) forwards;
+}
+
+/* Weather theme dynamic styles mapping */
+.bg-clear-day {
+  background: linear-gradient(135deg, #FFF5F0 0%, #FFFDF7 100%);
+}
+.bg-clear-night {
+  background: linear-gradient(135deg, #1A0A05 0%, #2A1A12 100%);
+}
+.bg-cloudy-day {
+  background: linear-gradient(135deg, #FFF5F0 0%, #EDE9E6 100%);
+}
+.bg-cloudy-night {
+  background: linear-gradient(135deg, #1A0A05 0%, #282422 100%);
+}
+.bg-overcast, .bg-foggy, .bg-drizzle, .bg-rainy {
+  background: linear-gradient(135deg, #F3EBE6 0%, #DDD5D0 100%);
+}
+:root[data-theme="dark"] .bg-overcast,
+:root[data-theme="dark"] .bg-foggy,
+:root[data-theme="dark"] .bg-drizzle,
+:root[data-theme="dark"] .bg-rainy {
+  background: linear-gradient(135deg, #221511 0%, #150B08 100%);
+}
+.bg-snowy, .bg-thunderstorm {
+  background: linear-gradient(135deg, #EBE6E3 0%, #CAC2BD 100%);
+}
+:root[data-theme="dark"] .bg-snowy,
+:root[data-theme="dark"] .bg-thunderstorm {
+  background: linear-gradient(135deg, #201410 0%, #100603 100%);
+}

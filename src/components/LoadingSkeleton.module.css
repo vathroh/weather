@@ -1,0 +1,99 @@
+.container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.leftCol, .rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.shimmer {
+  background-color: var(--border-color);
+  border-radius: var(--radius-control);
+  animation: pulse 1.6s infinite ease-in-out;
+}
+
+.skeletonHero {
+  height: 290px;
+  border-radius: var(--radius-card);
+  background-color: var(--panel-color);
+  border: 1px solid var(--border-color);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.skeletonHours {
+  height: 180px;
+  border-radius: var(--radius-card);
+  background-color: var(--panel-color);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+}
+
+.skeletonWeek {
+  height: 480px;
+  border-radius: var(--radius-card);
+  background-color: var(--panel-color);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+}
+
+.skeletonDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.skeletonDetailCard {
+  height: 140px;
+  border-radius: var(--radius-card);
+  background-color: var(--panel-color);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+}
+
+/* Extracted Utility & Layout Classes for modularity */
+.flexBetween { display: flex; justify-content: space-between; }
+.flexBetweenAlign { display: flex; justify-content: space-between; align-items: center; }
+.heroCenterContent { display: flex; gap: 20px; align-items: center; }
+.heroMainLines { flex: 1; }
+.hoursList { display: flex; gap: 12px; overflow: hidden; }
+.hourItem { width: 80px; height: 110px; flex-shrink: 0; }
+.detailHeader { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; }
+.weekList { display: flex; flex-direction: column; gap: 20px; }
+
+/* Extracted Dimension Classes to replace inline styles */
+.box120x18 { width: 120px; height: 18px; }
+.box80x18 { width: 80px; height: 18px; }
+.box180x32 { width: 180px; height: 32px; }
+.box120x16 { width: 120px; height: 16px; }
+.box100x60 { width: 100px; height: 60px; }
+.box80x36 { width: 80px; height: 36px; }
+.box150x20 { width: 150px; height: 20px; }
+.box80x12 { width: 80px; height: 12px; }
+.box100x32 { width: 100px; height: 32px; }
+.box120x12 { width: 120px; height: 12px; }
+.box80x16 { width: 80px; height: 16px; }
+.box60x16 { width: 60px; height: 16px; }
+.circle90 { width: 90px; height: 90px; border-radius: 50%; }
+.circle20 { width: 20px; height: 20px; border-radius: 50%; }
+.circle24 { width: 24px; height: 24px; border-radius: 50%; }
+
+/* Margins */
+.mb8 { margin-bottom: 8px; }
+.mb16 { margin-bottom: 16px; }
+.mb20 { margin-bottom: 20px; }
+.mb24 { margin-bottom: 24px; }
+.mt12 { margin-top: 12px; }
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
