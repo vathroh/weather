@@ -7,7 +7,7 @@ import {
   Gauge,
   Sunset,
   Umbrella,
-  CloudLightning
+  CloudLightning,
 } from "lucide-react";
 import SearchBar from "../components/SearchBar";
 import CurrentWeatherCard from "../components/CurrentWeatherCard";
@@ -24,7 +24,7 @@ import {
   formatHumidity,
   formatWindSpeed,
   formatPressure,
-  formatPrecipitation
+  formatPrecipitation,
 } from "../utils/formatters";
 import styles from "./WeatherDashboard.module.css";
 
@@ -45,7 +45,7 @@ export default function WeatherDashboard(): React.ReactElement {
     weatherData: data,
     loading,
     error,
-    refreshWeather: refetch
+    refreshWeather: refetch,
   } = useWeatherContext();
 
   const todayDaily = data?.daily?.[0];
@@ -56,14 +56,14 @@ export default function WeatherDashboard(): React.ReactElement {
       <header className={styles.header}>
         <div className={styles.brandWrapper}>
           <h1 className={styles.logoText}>
-            Solara<span className={styles.logoAccent}>.</span>
+            Weather<span className={styles.logoAccent}>.</span>
           </h1>
           <span className={styles.logoSub}>Biomarker & Climate Tech</span>
         </div>
 
         <div className={styles.actions}>
           <SearchBar />
-          
+
           <button
             onClick={toggleTheme}
             className={styles.themeToggle}
@@ -78,16 +78,15 @@ export default function WeatherDashboard(): React.ReactElement {
       {/* Main page state management router */}
       {loading && <LoadingSkeleton />}
 
-      {!loading && error && (
-        <ErrorState message={error} onRetry={refetch} />
-      )}
+      {!loading && error && <ErrorState message={error} onRetry={refetch} />}
 
       {!loading && !error && !data && (
         <div className={styles.emptyState}>
           <CloudLightning size={48} className={styles.logoAccent} />
           <h3 className={styles.emptyTitle}>No Location Selected</h3>
           <p className={styles.emptyDesc}>
-            Type a city name in the search bar above to load real-time meteorological reports.
+            Type a city name in the search bar above to load real-time
+            meteorological reports.
           </p>
         </div>
       )}
@@ -96,8 +95,11 @@ export default function WeatherDashboard(): React.ReactElement {
         <div className={`${styles.dashboardLayout} animate-fade-in`}>
           {/* Left Column - Core Metrics & Bento Cards */}
           <div className={styles.leftCol}>
-            <CurrentWeatherCard weather={data.current} location={selectedCity} />
-            
+            <CurrentWeatherCard
+              weather={data.current}
+              location={selectedCity}
+            />
+
             <HourlyForecast hourly={data.hourly} />
 
             <div className={styles.statsGrid}>
@@ -119,7 +121,9 @@ export default function WeatherDashboard(): React.ReactElement {
                 icon={<Sunset size={18} />}
                 title="Sunrise & Sunset"
                 value={todayDaily ? formatTime(todayDaily.sunset) : "--:--"}
-                desc={todayDaily ? `Sunrise: ${formatTime(todayDaily.sunrise)}` : ""}
+                desc={
+                  todayDaily ? `Sunrise: ${formatTime(todayDaily.sunrise)}` : ""
+                }
               />
 
               <WeatherDetailCard
@@ -140,7 +144,11 @@ export default function WeatherDashboard(): React.ReactElement {
                 icon={<Umbrella size={18} />}
                 title="Precipitation"
                 value={formatPrecipitation(data.current.precipitation)}
-                desc={todayDaily ? `Max Rain Chance: ${todayDaily.precipitationProbabilityMax}%` : ""}
+                desc={
+                  todayDaily
+                    ? `Max Rain Chance: ${todayDaily.precipitationProbabilityMax}%`
+                    : ""
+                }
               />
             </div>
           </div>
