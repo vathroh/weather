@@ -19,6 +19,6 @@ jobs:
           # Pastikan script ini dijalankan di dalam folder project Anda di VPS
           script: |
             cd /opt/weather
-            git pull origin main
+            git pull origin master
             npm install
             npm run build
