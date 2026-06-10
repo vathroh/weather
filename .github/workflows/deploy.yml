@@ -23,7 +23,7 @@ jobs:
             export PATH=$PATH:/usr/local/bin:/usr/bin:~/.npm-global/bin
 
             cd /opt/weather
-            git pull origin master
+            git fetch --all
+            git reset --hard origin/master
             npm install
-            rm -rf /opt/weather/dist
             npm run build
