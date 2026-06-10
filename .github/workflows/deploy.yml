@@ -29,12 +29,12 @@ jobs:
           # VITE_API_URL: ${{ secrets.VITE_API_URL }}
           NODE_ENV: production
 
-      - name: Deploy to VPS via rsync
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltgoDzvO --delete"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.VPS_HOST }}
-          REMOTE_USER: ${{ secrets.VPS_USER }}
-          TARGET: "/opt/weather"
+      - name: Deploy to VPS via scp
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "dist/*"
+          target: "/opt/weather"
+          strip_components: 1
