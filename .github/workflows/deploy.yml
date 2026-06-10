@@ -16,8 +16,12 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          # Pastikan script ini dijalankan di dalam folder project Anda di VPS
+          # Memuat profile dan environment variables agar NPM bisa ditemukan
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH=$PATH:/usr/local/bin:/usr/bin:~/.npm-global/bin
+
             cd /opt/weather
             git pull origin master
             npm install
