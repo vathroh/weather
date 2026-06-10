@@ -56,7 +56,7 @@ export default function WeatherDashboard(): React.ReactElement {
       <header className={styles.header}>
         <div className={styles.brandWrapper}>
           <h1 className={styles.logoText}>
-            Check The Weather<span className={styles.logoAccent}>.</span>
+            Solara<span className={styles.logoAccent}>.</span>
           </h1>
           <span className={styles.logoSub}>Biomarker & Climate Tech</span>
         </div>
